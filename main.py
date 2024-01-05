@@ -16,9 +16,16 @@ for filepath in filepaths:
     # This helps us to filename from the directory
     filename = Path(filepath).stem
     # Helps to get the invoice number and date by split function
-    invoice_no = filename.split("-")[0]
+    invoice_no,date = filename.split("-")
+    # This is to display the Invoice Number
     pdf.set_font(family="Times",size=16, style="B")
-    pdf.cell(w=50, h=8, txt=f"Invoice Number: {invoice_no}")
+    pdf.cell(w=50, h=8, txt=f"Invoice Number: {invoice_no}",ln= 1)
+
+    # This is to display the date
+    pdf.set_font(family="Times",size=16, style="B")
+    pdf.cell(w=50, h=8, txt=f"Dated : {date}")
+
+
     pdf.output(f"PDFs/{filename}.pdf")
 
 
